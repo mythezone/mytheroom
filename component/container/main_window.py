@@ -7,6 +7,8 @@ from PySide6.QtCore import Qt, QSize
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
+        
+        self.the_button_is_checked = True 
 
         self.setWindowTitle("My App")
         # self.setFixedSize(QSize(400, 300))
@@ -19,6 +21,18 @@ class MainWindow(QMainWindow):
 
         
         button = QPushButton("Press me!")
+        button.setCheckable(True)
+        button.clicked.connect(self.the_button_was_clicked)
+        button.clicked.connect(self.the_button_was_toggled)
         self.setCentralWidget(label)
         self.setCentralWidget(button)
         
+        
+    def the_button_was_clicked(self):
+        print("Clicked!")
+        
+    def the_button_was_toggled(self, checked):
+        self.the_button_is_checked = checked 
+        print("Checked?", checked)
+        
+    
