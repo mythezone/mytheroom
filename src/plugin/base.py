@@ -1,6 +1,5 @@
 import os 
 
-
 class PluginI(object):
     def execute(self):
         raise NotImplementedError("You must implement this method") 
